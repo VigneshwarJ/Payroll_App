@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Report</title>
+    <link href="{{url_for('static',filename='css/report/style.css')}}" rel="stylesheet">
+  </head>
+  <body>
+    <header class="clearfix">
+      <div id="logo">
+        <img src="{{url_for('static',filename='image/reportlogo.png')}}">
+      </div>
+      <h1>ABC Invoice</h1>
+      <div id="company" class="clearfix">
+        <div>ABC company</div>
+        <div>no 1 Dubai kuruku sandu, <br /> Dubai Main road,<br /> Dubai</div>
+        <div>98989898989</div>
+        <div><a href="mailto:company@vikky.com">abccompany@vikky.com</a></div>
+      </div>
+      <div id="project">
+        <div><span>PROJECT</span> Website development</div>
+        <div><span>CLIENT</span> Vikki solution</div>
+        <div><span>ADDRESS</span> Palani mutu sandhu, Palani</div>
+        <div><span>EMAIL</span> <a href="mailto:motta@vikky.com">motta@vikki.com</a></div>
+        <div><span>DATE</span> August 17, 2015</div>
+        <div><span>DUE DATE</span> September 17, 2015</div>
+      </div>
+    </header>
+    <main>
+      <table>
+        <thead>
+          <tr>
+              <th>
+                  #
+              </th>
+              <th>
+                  Employee Name
+              </th>
+              <th>
+                  Salary
+              </th>
+              <th>
+                  Status
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+         {% for row in data %}
+          <tr>
+              {% for d in row %}
+              <td>{{ d }}</td>
+              {% endfor %}
+          </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+      </table>
+      <div id="notices">
+        <div>NOTICE:</div>
+        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+      </div>
+    </main>
+    <footer>
+      Invoice was created on a computer and is valid without the signature and seal.
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+{% extends "header.html" %}
+
+{% block body %}
+{% if session.logged_in %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="tabbable" id="tabs">
+				<ul class="nav nav-tabs">
+					<li class="nav-item">
+						<a class="nav-link" href="#tab1" data-toggle="tab">Section 1</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active show" href="#tab2" data-toggle="tab">Section 2</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="tab1">
+						<form role="form" method="post" action="">
+                            <div class="form-group">
+                                 
+                                <label for="employee_name">
+                                    Employee Name
+                                </label>
+                                <input type="text" class="form-control" name="EmpName" id="{{request.form.EmpName}}"/>
+                            </div>
+                            <div class="form-group">
+                                 
+                                <label for="salary">
+                                    Salary
+                                </label>
+                                <input type="text" class="form-control" name="Salary" id="{{request.form.Salary}}" />
+                            </div>
+                            <div class="form-group">
+                                 
+                                <label for="Profile Image">
+                                    Picture input
+                                </label>
+                                <input type="file" class="form-control-file" id="Photo" />
+                                <p class="help-block">
+                                    upload a profile picture
+                                </p>
+                            </div>
+                            <div class="checkbox">
+                                 
+                               
+                            <button type="submit" class="btn btn-primary" name='Add' value="Add">
+                                Add
+                            </button>
+                            <button type="submit" class="btn btn-primary" name="Report" value="Report">
+                                Update
+                            </button>
+                            <button type="submit" class="btn btn-primary" value="Cancel">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary" value="Exit">
+                                Exit
+                            </button>
+                            <button type="submit" class="btn btn-primary" name="Report" value="Report">
+                                    Print
+                            </button>
+                        </form>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        Employee Name
+                                    </th>
+                                    <th>
+                                        Salary
+                                    </th>
+                                    <th>
+                                        Status
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               {% for row in data %}
+                                <tr>
+                                    {% for d in row %}
+                                    <td>{{ d }}</td>
+                                    {% endfor %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+					</div>
+					
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane" id="tab2">
+                            <p>
+                                Howdy, I'm in Section 2.
+                            </p>
+                    </div>
+                </div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+{% else %}  
+<div class="container-fluid" >
+	<div class="row">
+		<div class="col-md-12">
+			<div class="jumbotron" style="margin-right: 10px; margin-left: 10px; margin-top: 40px; margin-bottom: 5px;">
+				<h2>
+					Hello
+				</h2>
+				<p>
+					<p> Please login to view dashboard </p>
+				</p>
+				<p>
+					<a class="btn btn-primary btn-large" href="/login/">Login</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endif %} 
+{% endblock %}
